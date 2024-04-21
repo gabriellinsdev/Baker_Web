@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <link rel="stylesheet" href="css/main.css">
+    <title>BAKER | Produtos do Padeiro</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<body>
+
+<!--NavBar-->
+<header>
+    <nav class="navbar-main">
+        <div class="navbar-logo">
+            <img src="img/logo.png" alt="logo Baker">
+        </div>
+
+        <div class="navbar-lista-sites">
+            <ul>
+                <li class="navbar-link-titulo"><a href="index.html" class="navbar-link-pagina">Home</a></li>
+                <li class="navbar-link-titulo"><a href="padeiros-proximos.html" class="navbar-link-pagina">Padeiros Próximos</a></li>
+                <li class="navbar-link-titulo"><a href="padeiro-ideal.html" class="navbar-link-pagina">Padeiro Ideal</a></li>
+                <li class="navbar-link-titulo"><a href="produtos-do-padeiro1.html" class="navbar-link-pagina">Produtos do Padeiro</a></li>
+            </ul>
+        </div>
+
+        <div class="navbar-btns">
+            <button class="navbar-login"><a href="#">Entrar</a></button>
+            <button><img src="img/carrinho.png" alt="carrinho de compras" class="navbar-carrinho"></button>
+        </div>
+
+        <div class="navbar-btn-menu-sanduiche">
+            <button onclick="menuShow()"><img src="img/menu-sanduiche.png" class="navbar-icone-menu-sanduiche" alt="menu sanduiche"></button>
+        </div>
+    </nav>
+
+    <div class="navbar-mobile">
+        <ul>
+            <li class="navbar-link-titulo"><a href="#" class="navbar-link-pagina">Home</a></li>
+            <li class="navbar-link-titulo"><a href="#" class="navbar-link-pagina">Padeiros Próximos</a></li>
+            <li class="navbar-link-titulo"><a href="#" class="navbar-link-pagina">Padeiro Ideal</a></li>
+            <li class="navbar-link-titulo"><a href="#" class="navbar-link-pagina">Produtos do Padeiro</a></li>
+        </ul>
+
+        <div class="navbar-btns">
+            <button class="navbar-login"><a href="#">Login</a></button>
+            <button class="navbar-login"><a href="#">Carrinho</a></button>
+        </div>
+    </div>
+</header>
+
+<section class="produtos_do_padeiro-padeiro">
+    <div class="produtos_do_padeiro-padeiro-selecionado">
+        <button class="btn-voltar"><a href="produtos-do-padeiro1.html"><img src="img/voltar.png" alt="icone de voltar" class="img-voltar"></a></button>
+        <img src="img/logo-padeiro.png" alt="logo do padeiro" class="produtos_do_padeiro-logo-padeiro"> 
+        <div class="produtos_do_padeiro-conteudo-padeiro-selecionado">
+            <h3>Padeiro</h3>
+            <p>Artesanais</p>
+            <p>Zero Gluten</p>
+        </div>
+    </div>
+</section>
+
+<section class="produtos_do_padeiro-produtos">
+    <div class="produtos_do_padeiro-fileira">
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao1.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Pão de Leite</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 2,50</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Artesanal</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao2.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Pão Integral</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 12,50</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Caseiro</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao3.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Rosquinha</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 6,50</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Caseiro</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao4.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Brioche</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 17,90</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Caseiro</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+    </div>
+    <!--Fileira 2-->
+    <div class="produtos_do_padeiro-fileira">
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao5.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Pão Francês</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 0,50</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Artesanal</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao6.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Pão Italiano</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 15,50</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Caseiro</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao7.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Croissant</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 7,20</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Caseiro</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao8.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Pão de Forma</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 22,90</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Caseiro</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+    </div>
+    <!--Fileira 3-->
+    <div class="produtos_do_padeiro-fileira">
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao1.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Pão de Leite</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 2,50</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Artesanal</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao2.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Pão Integral</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 12,50</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Caseiro</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao3.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Rosquinha</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 6,50</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Caseiro</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+        <div class="produtos_do_padeiro-card-produto">
+            <div class="produtos_do_padeiro-produto">
+                <img src="img/pao4.png" class="produtos_do_padeiro-imagem-produto" alt="imagem de pão"> 
+                <div class="produtos_do_padeiro-titulo">
+                    <h4 class="produtos_do_padeiro-titulo-pao">Brioche</h4>
+                    <h4 class="produtos_do_padeiro-titulo-preco">R$ 17,90</h4>
+                </div>
+                <div class="produtos_do_padeiro-filtros">
+                    <p class="produtos_do_padeiro-filtro-pao">Zero Lactose</p>
+                    <p class="produtos_do_padeiro-filtro-pao">Caseiro</p>
+                </div>
+                <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="produtos_do_padeiro-paginacao">
+    <div class="produtos_do_padeiro-paginacao-numeros">
+        <button>&lt;</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>4</button>
+        <button>5</button>
+        <button>&gt;</button>
+    </div>
+</section>
+
+
+<footer>
+    <h6>Todos os direitos reservados</h6>
+</footer>
+    
+    <script type="text/javascript" src='js/main.js'></script>
+    <script type="text/javascript" src='js/produtos-padeiro.js'></script>
+</body>
+</html>
