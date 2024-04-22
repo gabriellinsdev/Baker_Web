@@ -1,6 +1,7 @@
 var quantidade = 1
 
-let cd_Usuario1
+let CD_PADEIRO
+let NM_PADEIRO
 
 function buscarPadeiroIdeal() {
 
@@ -22,21 +23,26 @@ function buscarPadeiroIdeal() {
         return response.json();
     })
     .then(data => {
-        var padeiros = data.data;
+        var dados = data.data;
+        var mensagem = data.mensagem;
+        var stacktrace = data.stacktrace;
 
-console.log(padeiros)
+console.log(dados)
 
-        document.querySelector('#padeiro1').textContent = padeiros[0].nM_USUARIO;
+        CD_PADEIRO = dados[0].cD_USUARIO;
+        NM_PADEIRO = dados[0].nM_USUARIO;
 
-        cd_Usuario1 = padeiros[0].cD_USUARIO;
+        document.querySelector('#padeiro').textContent = NM_PADEIRO;
+
     })
     .catch(error => {
         console.error('Erro:', error);
     });
 }
 
-function redirectWithUserCode(userCode) {
-    sessionStorage.setItem('cd_padeiro',  userCode);
+function redirectWithUserCode(CD_PADEIRO, NM_PADEIRO) {
+    sessionStorage.setItem('CD_PADEIRO',  CD_PADEIRO);
+    sessionStorage.setItem('NM_PADEIRO',  NM_PADEIRO);
 
     var destinationUrl = 'http://127.0.0.1:5500/produtos-do-padeiro2.html'
     

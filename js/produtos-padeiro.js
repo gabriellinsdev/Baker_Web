@@ -1,8 +1,11 @@
-let cd_padeiro = sessionStorage.getItem('cd_padeiro');
+let CD_PADEIRO = sessionStorage.getItem('CD_PADEIRO');
+let NM_PADEIRO = sessionStorage.getItem('NM_PADEIRO');
+
+buscarProdutosPadeiro()
 
 function buscarProdutosPadeiro() {
     // Fazer a requisição para a API
-    fetch(`https://localhost:7023/Produtos/List?CD_USUARIO=${cd_padeiro}`, {
+    fetch(`https://localhost:7023/Produtos/List?CD_USUARIO=${CD_PADEIRO}`, {
         headers:{
             "Content-Type":"application/json",
             "Accept":"*/*"
@@ -16,13 +19,15 @@ function buscarProdutosPadeiro() {
         return response.json();
     })
     .then(data => {
-        // Processar os dados retornados pela API
-        console.log('Produtos do padeiro:', data);
-        // Faça o que desejar com as vendas, como exibí-las na página
+        var dados = data.data;
+        var mensagem = data.mensagem;
+        var stacktrace = data.stacktrace;
+
+        document.querySelector('#padeiro1').textContent = NM_PADEIRO;
+
     })
     .catch(error => {
         console.error('Erro:', error);
     });
 }
 
-buscarProdutosPadeiro()

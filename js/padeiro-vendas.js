@@ -1,10 +1,11 @@
-let cd_padeiro = sessionStorage.getItem('cd_padeiro');
-console.log(cd_padeiro)
+let CD_PADEIRO = sessionStorage.getItem('CD_PADEIRO');
+let NM_PADEIRO = sessionStorage.getItem('NM_PADEIRO');
 
+buscarVendasPorPadeiro();
 
 function buscarVendasPorPadeiro() {
     // Fazer a requisição para a API
-    fetch(`https://localhost:7023/Padeiros/SalesReport?CD_USUARIO=${cd_padeiro}`, {
+    fetch(`https://localhost:7023/Padeiros/SalesReport?CD_USUARIO=${CD_PADEIRO}`, {
         headers:{
             "Content-Type":"application/json",
             "Accept":"*/*"
@@ -18,14 +19,11 @@ function buscarVendasPorPadeiro() {
         return response.json();
     })
     .then(data => {
-        // Processar os dados retornados pela API
-        console.log('Vendas do padeiro:', data);
-        // Faça o que desejar com as vendas, como exibí-las na página
+        var dados = data.data;
+        var mensagem = data.mensagem;
+        var stacktrace = data.stacktrace;
     })
     .catch(error => {
         console.error('Erro:', error);
     });
 }
-
-// Exemplo de uso: buscar vendas para o padeiro com ID 123
-buscarVendasPorPadeiro(123);
