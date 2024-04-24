@@ -91,7 +91,7 @@
         </div>
         
         <div class="conf-padeiro-cadastrar-formulario">
-            <form>
+            <form onsubmit="return false;">
                 <label for="produto-nome">Nome do Produto</label><br>
                 <input type="text" id="nome-do-produto" name="nome-produto" class="conf-padeiro-form-cadastrar"><br><br>
 
@@ -114,7 +114,7 @@
                 <label for="produto-imagem">Imagem do Produto</label><br>
                 <input type="file" id="produto-imagem" name="produto-imagem" accept="image/*"><br><br>
                 
-                <button onclick="cadastrarProduto(event)" class="conf-padeiro-btncadastrar-produto-form">Cadastrar Produto</button>
+                <button onclick="inserirProdutoPadeiro()" class="conf-padeiro-btncadastrar-produto-form">Cadastrar Produto</button>
             </form>
         </div>
        

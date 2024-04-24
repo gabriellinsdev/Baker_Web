@@ -23,6 +23,8 @@ function buscarProdutosPadeiro() {
         var mensagem = data.mensagem;
         var stacktrace = data.stacktrace;
 
+        console.log(dados)
+
         document.querySelector('#padeiro1').textContent = NM_PADEIRO;
 
     })
