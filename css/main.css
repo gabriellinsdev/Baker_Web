@@ -875,7 +875,8 @@ header{
 }
 
 .produtos_do_padeiro-imagem-produto{
-    width: 100%;
+    width: 312.50px;
+    height: 312.50px;
     border-radius: 25px 25px 0 0;
 }
 
