@@ -11,16 +11,14 @@ let NM_PADEIRO3
 window.buscarPadeirosProximos = buscarPadeirosProximos;
 
 function initMap() {
-  map = new google.maps.Map(document.getElementById("map"), {
-    center: { lat: -23.533773, lng: -46.625290 },
-    zoom: 12,
-  });
-}
-
-window.initMap = initMap;
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: -23.533773, lng: -46.625290 },
+      zoom: 12,
+    });
+  }
+  
 
 function buscarPadeirosProximos() {
-    initMap()
 
     var cep = document.getElementById('padeiros_proximos-search').value;
     var quantidade = 3;
@@ -90,3 +88,6 @@ function redirectWithUserCode(CD_PADEIRO, NM_PADEIRO) {
     window.location.href = destinationUrl;
 }
 
+window.onload = function() {
+    initMap();
+};

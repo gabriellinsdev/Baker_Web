@@ -1,5 +1,7 @@
 let CD_PADEIRO = sessionStorage.getItem('CD_PADEIRO');
 let NM_PADEIRO = sessionStorage.getItem('NM_PADEIRO');
+let CD_CLIENTE = sessionStorage.getItem('CD_CLIENTE');
+let NM_CLIENTE = sessionStorage.getItem('NM_CLIENTE');
 
 
 let CD_PRODUTO = 1;
@@ -84,6 +86,14 @@ function alterarProdutoPadeiro(PRODUTO) {
     formData.append('DS_PRODUTO', PRODUTO.DS_PRODUTO);
     formData.append('VL_PRECO', PRODUTO.VL_PRECO);
     formData.append('VB_IMAGEM', PRODUTO.VB_IMAGEM);
+
+    // Capturando os checkboxes selecionados
+    let checkboxes = document.querySelectorAll('input[name="categoria"]:checked');
+    let alimentosRestritos = [];
+    checkboxes.forEach(checkbox => {
+        alimentosRestritos.push(checkbox.value);
+    });
+    formData.append('lS_ALIMENTO_RESTRITO', JSON.stringify(alimentosRestritos));
 
     fetch(`https://localhost:7023/Produtos/Update`, {
         method: 'PUT',

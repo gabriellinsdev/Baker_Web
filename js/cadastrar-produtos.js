@@ -1,7 +1,7 @@
 let CD_PADEIRO = sessionStorage.getItem('CD_PADEIRO');
 let NM_PADEIRO = sessionStorage.getItem('NM_PADEIRO');
-
-
+let CD_CLIENTE = sessionStorage.getItem('CD_CLIENTE');
+let NM_CLIENTE = sessionStorage.getItem('NM_CLIENTE');
 
 function inserirProdutoPadeiro() {
     let formData = new FormData();
@@ -13,6 +13,14 @@ function inserirProdutoPadeiro() {
     formData.append('fF_IMAGEM', document.getElementById('produto-imagem').files[0]);
     formData.append('vB_IMAGEM', null);
 
+
+    // Checkbox values
+    let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
+    let categorias = [];
+    checkboxes.forEach(checkbox => {
+        categorias.push(checkbox.value);
+    });
+    formData.append('categorias', JSON.stringify(categorias));
 
 
     fetch('https://localhost:7023/Produtos/Insert', {
