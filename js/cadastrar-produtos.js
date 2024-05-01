@@ -11,16 +11,24 @@ function inserirProdutoPadeiro() {
     formData.append('dS_PRODUTO', "teste ");
     formData.append('vL_PRECO', document.getElementById('preco-do-produto').value);
     formData.append('fF_IMAGEM', document.getElementById('produto-imagem').files[0]);
-    formData.append('vB_IMAGEM', null);
 
-
-    // Checkbox values
     let checkboxes = document.querySelectorAll('input[type=checkbox]:checked');
     let categorias = [];
     checkboxes.forEach(checkbox => {
         categorias.push(checkbox.value);
     });
-    formData.append('categorias', JSON.stringify(categorias));
+
+    let categoriasXML = '<ALIMENTOSRESTRITOS>';
+    categorias.forEach(categoria => {
+        categoriasXML += '<ITEM>\n';
+        categoriasXML += '<CD_ALIMENTO_RESTRITO>' + categoria + '</CD_ALIMENTO_RESTRITO>\n';
+        categoriasXML += '</ITEM>\n';
+    });
+    categoriasXML += '</ALIMENTOSRESTRITOS>';
+
+    // Adicionar o XML das categorias ao formData
+    formData.append('lS_ALIMENTOS_RESTRITOS', categoriasXML);
+    console.log(categoriasXML)
 
 
     fetch('https://localhost:7023/Produtos/Insert', {

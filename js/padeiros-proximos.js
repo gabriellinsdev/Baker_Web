@@ -24,7 +24,7 @@ function buscarPadeirosProximos() {
     var cep = document.getElementById('padeiros_proximos-search').value;
     var quantidade = 3;
 
-    fetch(`https://localhost:7023/LocationNearby?CEP_CLIENTE=${cep}&QT_LINHAS=${quantidade}`, {
+    fetch(`https://localhost:7023/ListarPadeirosProximos?CEP_CLIENTE=${cep}&QT_LINHAS=${quantidade}`, {
         headers:{
             "Content-Type":"application/json",
             "Accept":"*/*"
@@ -42,16 +42,12 @@ function buscarPadeirosProximos() {
         var mensagem = data.mensagem;
         var stacktrace = data.stacktrace;
 
-        console.log(dados[0].nM_USUARIO)
-
-
         CD_PADEIRO1 = dados[0].cD_USUARIO;
         NM_PADEIRO1 = dados[0].nM_USUARIO;
         CD_PADEIRO2 = dados[1].cD_USUARIO;
         NM_PADEIRO2 = dados[1].nM_USUARIO;
         CD_PADEIRO3 = dados[2].cD_USUARIO;
         NM_PADEIRO3 = dados[2].nM_USUARIO;
-
 
         document.querySelector('#padeiro1').textContent = NM_PADEIRO1;
         document.querySelector('#padeiro2').textContent = NM_PADEIRO2;

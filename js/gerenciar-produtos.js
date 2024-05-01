@@ -24,6 +24,9 @@ function criarBotoes(produto) {
         // Remover a div do produto da interface após a exclusão
         divBotoes.parentElement.remove();
     });
+    botaoAlterar.addEventListener('click', () => {
+        window.location.href = "http://127.0.0.1:5500/padeiro-configuracoes-alterar-produtos.html"
+    });
 
     divBotoes.appendChild(botaoAlterar);
     divBotoes.appendChild(botaoExcluir);
@@ -60,9 +63,21 @@ function preencherProdutosNaPagina(produtos) {
         const descricao1 = document.createElement('p');
         descricao1.textContent = produto.dS_PRODUTO;
         divInformacoes.appendChild(descricao1);
+
         const descricao2 = document.createElement('p');
-        descricao2.textContent = "Artesanal"; // Supondo que a descrição "Artesanal" seja fixa
+        const alimentosRestritosXML = produto.lS_ALIMENTOS_RESTRITOS;
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(alimentosRestritosXML, "text/xml");
+        const items = xmlDoc.querySelectorAll('ITEM');
+        let descricaoAlimentosRestritos = "";
+        items.forEach(item => {
+            const nomeAlimento = item.querySelector('DS_ALIMENTO').textContent;
+            descricaoAlimentosRestritos += nomeAlimento + ", ";
+        });
+        // Remover a vírgula extra no final
+        descricao2.textContent = descricaoAlimentosRestritos.slice(0, -2);
         divInformacoes.appendChild(descricao2);
+
         const preco = document.createElement('p');
         preco.textContent = produto.vL_PRECO ? `R$ ${produto.vL_PRECO.toFixed(2)}` : 'Preço indisponível';
         divInformacoes.appendChild(preco);
@@ -76,6 +91,8 @@ function preencherProdutosNaPagina(produtos) {
         produtosContainer.appendChild(produtoSection);
     });
 }
+
+
 
 
 function alterarProdutoPadeiro(PRODUTO) {
@@ -92,8 +109,11 @@ function alterarProdutoPadeiro(PRODUTO) {
     let alimentosRestritos = [];
     checkboxes.forEach(checkbox => {
         alimentosRestritos.push(checkbox.value);
+        console.log(alimentosRestritos)
     });
-    formData.append('lS_ALIMENTO_RESTRITO', JSON.stringify(alimentosRestritos));
+    formData.append('lS_ALIMENTOS_RESTRITOS', JSON.stringify(alimentosRestritos));
+
+    
 
     fetch(`https://localhost:7023/Produtos/Update`, {
         method: 'PUT',
