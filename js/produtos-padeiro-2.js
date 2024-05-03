@@ -7,6 +7,57 @@ let NM_CLIENTE = sessionStorage.getItem('NM_CLIENTE');
 const nomePadeiro = document.querySelector('#padeiro1')
 nomePadeiro.innerHTML = NM_PADEIRO
 
+
+
+function preencherProdutosNaPagina(produtos) {
+    const produtosContainer = document.querySelector('.produtos_do_padeiro-produtos');
+
+    produtos.forEach(produto => {
+        const produtoCard = document.createElement('div');
+        produtoCard.classList.add('produtos_do_padeiro-card-produto');
+
+        const produtoInfo = document.createElement('div');
+        produtoInfo.classList.add('produtos_do_padeiro-produto');
+
+        const imagem = document.createElement('img');
+        imagem.classList.add('produtos_do_padeiro-imagem-produto');
+        imagem.src = `data:image/jpeg;base64,${produto.vB_IMAGEM}`;
+        imagem.alt = "Imagem do produto";
+
+        const titulo = document.createElement('h4');
+        titulo.textContent = produto.nM_PRODUTO;
+
+        const preco = document.createElement('h4');
+        preco.textContent = produto.vL_PRECO ? `R$ ${produto.vL_PRECO.toFixed(2)}` : 'Preço indisponível';
+
+        const filtros = document.createElement('div');
+        filtros.classList.add('produtos_do_padeiro-filtros');
+
+        const alimentosRestritosXML =  produto.lS_ALIMENTOS_RESTRITOS;
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(alimentosRestritosXML, "text/xml");
+        const items = xmlDoc.querySelectorAll('ITEM');
+        items.forEach(item => {
+            const filtroElement = document.createElement('p');
+            filtroElement.textContent = item.querySelector('DS_ALIMENTO').textContent;
+            filtros.appendChild(filtroElement);
+        });
+
+        const botaoAdicionar = document.createElement('button');
+        botaoAdicionar.classList.add('produtos_do_padeiro-btn-adicionar');
+        botaoAdicionar.textContent = 'Adicionar no Carrinho';
+
+        produtoInfo.appendChild(imagem);
+        produtoInfo.appendChild(titulo);
+        produtoInfo.appendChild(preco);
+        produtoInfo.appendChild(filtros);
+        produtoInfo.appendChild(botaoAdicionar);
+
+        produtoCard.appendChild(produtoInfo);
+        produtosContainer.appendChild(produtoCard);
+    });
+}
+
 function adicionarAoCarrinho(cD_PRODUTO, vL_PRECO) {
     // Criar objeto com os dados necessários para adicionar ao carrinho
     let dadosCarrinho = {
@@ -45,7 +96,6 @@ function adicionarAoCarrinho(cD_PRODUTO, vL_PRECO) {
 }
 
 function buscarProdutosPadeiro() {
-    // Fazer a requisição para a API
     fetch(`https://localhost:7023/Produtos/List?CD_USUARIO=${CD_PADEIRO}`, {
         headers:{
             "Content-Type":"application/json",
@@ -60,45 +110,9 @@ function buscarProdutosPadeiro() {
         return response.json();
     })
     .then(data => {
-        var dados = data.data;
-        var mensagem = data.mensagem;
-        var stacktrace = data.stacktrace;
-    
-        console.log(dados);
-    
-        // Selecionar o container onde os produtos serão exibidos
-        const containerProdutos = document.querySelector('.produtos_do_padeiro-produtos');        
-    
-        // Limpar qualquer conteúdo pré-existente dentro do container
-        containerProdutos.innerHTML = '';
-    
-        // Iterar sobre os dados dos produtos e criar elementos HTML para cada um
-        dados.forEach(produto => {
-            // Criar elementos HTML para representar cada produto
-            const produtoElement = document.createElement('div');
-            produtoElement.classList.add('produtos_do_padeiro-card-produto');
-    
-            produtoElement.innerHTML = `
-                <div class="produtos_do_padeiro-produto">
-                    <img src="data:image/jpeg;base64,${produto.vB_IMAGEM}" class="produtos_do_padeiro-imagem-produto" alt="${produto.nM_PRODUTO}"> 
-                    <div class="produtos_do_padeiro-titulo">
-                        <h4 class="produtos_do_padeiro-titulo-pao">${produto.nM_PRODUTO}</h4>
-                        <h4 class="produtos_do_padeiro-titulo-preco">R$ ${produto.vL_PRECO}</h4>
-                    </div>
-                    <button class="produtos_do_padeiro-btn-adicionar">Adicionar no Carrinho</button>
-                </div>
-            `;
-    
-            // Adicionar evento de clique ao botão "Adicionar no Carrinho"
-            const btnAdicionarCarrinho = produtoElement.querySelector('.produtos_do_padeiro-btn-adicionar');
-            btnAdicionarCarrinho.addEventListener('click', () => {
-                adicionarAoCarrinho(produto.cD_PRODUTO, produto.vL_PRECO);
-            });
-    
-            // Adicionar o elemento do produto ao container de produtos
-            containerProdutos.appendChild(produtoElement);
-        });
-    })
+        let produtos = data.data;
+        preencherProdutosNaPagina(produtos);
+    })  
     .catch(error => {
         console.error('Erro:', error);
     });
