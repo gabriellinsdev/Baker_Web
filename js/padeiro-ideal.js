@@ -37,35 +37,46 @@ function buscarPadeiroIdeal() {
 
   // Construir o XML baseado nas respostas dos checkboxes
   const gluten = document.querySelector("#padeiro-ideal_gluten-sim").checked
-    ? ""
-    : "1";
+    ? "1"
+    : "";
   const lactose = document.querySelector("#padeiro-ideal_lactose-sim").checked
-    ? ""
-    : "2";
+    ? "2"
+    : "";
   const lowCarb = document.querySelector("#padeiro-ideal_lowcarb-sim").checked
-    ? ""
-    : "3";
+    ? "3"
+    : "";
   const caseiros = document.querySelector("#padeiro-ideal_caseiro-sim").checked
     ? "4"
     : "";
 
-  const xmlString = `<ALIMENTOSRESTRITOS>${
-    lactose
-      ? `<ITEM><CD_ALIMENTO_RESTRITO>${lactose}</CD_ALIMENTO_RESTRITO></ITEM>`
-      : ""
-  }${
-    gluten
-      ? `<ITEM><CD_ALIMENTO_RESTRITO>${gluten}</CD_ALIMENTO_RESTRITO></ITEM>`
-      : ""
-  }${
-    lowCarb
-      ? `<ITEM><CD_ALIMENTO_RESTRITO>${lowCarb}</CD_ALIMENTO_RESTRITO></ITEM>`
-      : ""
-  }${
-    caseiros
-      ? `<ITEM><CD_ALIMENTO_RESTRITO>${caseiros}</CD_ALIMENTO_RESTRITO></ITEM>`
-      : ""
-  }</ALIMENTOSRESTRITOS>`;
+  let xmlString = null;
+
+  console.log(gluten.value);
+
+  if (
+    gluten != "" &&
+    lactose != "" &&
+    lowCarb != "" &&
+    caseiros != ""
+  ) {
+    xmlString = `<ALIMENTOSRESTRITOS>${
+      lactose
+        ? `<ITEM><CD_ALIMENTO_RESTRITO>${lactose}</CD_ALIMENTO_RESTRITO></ITEM>`
+        : ""
+    }${
+      gluten
+        ? `<ITEM><CD_ALIMENTO_RESTRITO>${gluten}</CD_ALIMENTO_RESTRITO></ITEM>`
+        : ""
+    }${
+      lowCarb
+        ? `<ITEM><CD_ALIMENTO_RESTRITO>${lowCarb}</CD_ALIMENTO_RESTRITO></ITEM>`
+        : ""
+    }${
+      caseiros
+        ? `<ITEM><CD_ALIMENTO_RESTRITO>${caseiros}</CD_ALIMENTO_RESTRITO></ITEM>`
+        : ""
+    }</ALIMENTOSRESTRITOS>`;
+  }
 
   console.log(xmlString);
 

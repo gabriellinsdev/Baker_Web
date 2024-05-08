@@ -99,7 +99,8 @@
                 <input type="text" id="preco-do-produto" name="preco-produto" class="conf-padeiro-form-cadastrar"><br><br>
 
                 <label for="produto-preco">Especificação do Produto</label><br>
-            <input type="checkbox" id="zeroGluten" name="categoria" value="1">
+                
+                <input type="checkbox" id="zeroGluten" name="categoria" value="1">
                 <label for="zeroGluten">Zero Gluten</label><br>
                     
                 <input type="checkbox" id="zeroLactose" name="categoria" value="2">
@@ -111,10 +112,9 @@
                 <input type="checkbox" id="artesanal" name="categoria" value="4">
                 <label for="artesanal">Artesanal</label><br><br>
 
-                <label for="produto-imagem">Imagem do Produto</label><br>
                 <input type="file" id="produto-imagem" name="produto-imagem" accept="image/*"><br><br>
                 
-                <button onclick="inserirProdutoPadeiro()" class="conf-padeiro-btncadastrar-produto-form">Alterar Produto</button>
+                <button onclick="alterarProdutoPadeiro()" class="conf-padeiro-btncadastrar-produto-form">Alterar Produto</button>
             </form>
         </div>
        
@@ -128,7 +128,7 @@
 </footer>
     
     <script type="text/javascript" src='js/main.js'></script>
-    <script type="text/javascript" src='js/cadastrar-produtos.js'></script>
+    <script type="text/javascript" src='js/alterar-produtos.js'></script>
     
 </body>
 </html>

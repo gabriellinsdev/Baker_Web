@@ -1,12 +1,43 @@
-function Login()
-{
-    event.preventDefault()
-    
-    sessionStorage.setItem('CD_PADEIRO',  "1383A09C-BA6C-4DE8-91B0-68E07BDFF3C8");
-    sessionStorage.setItem('NM_PADEIRO',  "GABRIEL (PADEIRO)");
-    sessionStorage.setItem('CD_CLIENTE',  "4E2CCD38-4184-4349-B6B6-4EA74337F673");
-    sessionStorage.setItem('NM_CLIENTE',  "PEDRO (CLIENTE))");
-    
-    // Redirecionar para a nova URL
-    window.location.href = 'http://127.0.0.1:5500/padeiro-configuracoes-gerenciar-produtos.html';
+buscarUsuario("CD_PADEIRO","NM_PADEIRO","94B4BEE0-FBF3-4AF1-A67D-69710BF12F9B");
+buscarUsuario("CD_CLIENTE","NM_CLIENTE","BD180837-2821-4EA4-810C-7C396BAC6742");
+
+function buscarUsuario(cd_key, nm_key, CD_USUARIO) {
+  fetch(`https://localhost:7023/Usuario/Get?CD_USUARIO=${CD_USUARIO}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "*/*",
+    },
+    mode: "cors",
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Erro ao fazer a requisição");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      var Usuario = data.data;
+      var mensagem = data.mensagem;
+      var stacktrace = data.stacktrace;
+
+      console.log(Usuario);
+
+      sessionStorage.setItem(cd_key, Usuario.cD_USUARIO);
+      sessionStorage.setItem(nm_key, Usuario.nM_USUARIO);
+
+      let usuarioElement = document.getElementById("usuario");
+      console.log(usuarioElement)
+      if (cd_key == "CD_PADEIRO") {
+        usuarioElement.value = Usuario.nM_USUARIO;
+      }
+    })
+    .catch((error) => {
+      console.error("Erro:", error);
+    });
+}
+
+function Login() {
+  event.preventDefault();
+window.location.href = "http://127.0.0.1:5500/padeiro-configuracoes-gerenciar-produtos.html";
+
 }
