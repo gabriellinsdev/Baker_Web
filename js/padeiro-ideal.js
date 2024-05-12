@@ -3,17 +3,14 @@ let CD_PADEIRO;
 let NM_PADEIRO;
 
 function desabilitaAlimentoRestrito() {
-  if (
-    document.querySelector("#padeiro-ideal_caseiro-sim").checked ||
-    document.querySelector("#padeiro-ideal_caseiro-nao").checked
-  ) {
-    document.querySelector("#padeiro-ideal_lactose-sim").checked = false;
-    document.querySelector("#padeiro-ideal_gluten-sim").checked = false;
-    document.querySelector("#padeiro-ideal_lowcarb-sim").checked = false;
+  const lactoseSim = document.querySelector("#padeiro-ideal_lactose-sim");
+  const glutenSim = document.querySelector("#padeiro-ideal_gluten-sim");
+  const lowCarbSim = document.querySelector("#padeiro-ideal_lowcarb-sim");
 
-    document.querySelector("#padeiro-ideal_lactose-nao").checked = false;
-    document.querySelector("#padeiro-ideal_gluten-nao").checked = false;
-    document.querySelector("#padeiro-ideal_lowcarb-nao").checked = false;
+  if (lactoseSim && glutenSim && lowCarbSim) {
+    lactoseSim.checked = false;
+    glutenSim.checked = false;
+    lowCarbSim.checked = false;
   }
 }
 
@@ -27,7 +24,6 @@ function desabilitaAlimentoCaseiros() {
     document.querySelector("#padeiro-ideal_lowcarb-nao").checked
   ) {
     document.querySelector("#padeiro-ideal_caseiro-sim").checked = false;
-    document.querySelector("#padeiro-ideal_caseiro-nao").checked = false;
   }
 }
 
@@ -45,20 +41,12 @@ function buscarPadeiroIdeal() {
   const lowCarb = document.querySelector("#padeiro-ideal_lowcarb-sim").checked
     ? "3"
     : "";
-  const caseiros = document.querySelector("#padeiro-ideal_caseiro-sim").checked
-    ? "4"
-    : "";
+
+  const caseirosCheckbox = document.querySelector("#padeiro-ideal_caseiro-sim");
+  const caseiros = caseirosCheckbox && caseirosCheckbox.checked ? "4" : "";
 
   let xmlString = null;
-
-  console.log(gluten.value);
-
-  if (
-    gluten != "" &&
-    lactose != "" &&
-    lowCarb != "" &&
-    caseiros != ""
-  ) {
+  if (gluten !== "" || lactose !== "" || lowCarb !== "" || caseiros !== "") {
     xmlString = `<ALIMENTOSRESTRITOS>${
       lactose
         ? `<ITEM><CD_ALIMENTO_RESTRITO>${lactose}</CD_ALIMENTO_RESTRITO></ITEM>`
