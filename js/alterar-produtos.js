@@ -43,11 +43,9 @@ function preencherProdutoNaPagina(produto) {
         const zeroLactoseCheckbox = document.getElementById('zeroLactose');
         const lowCarbCheckbox = document.getElementById('lowCarb');
         const artesanalCheckbox = document.getElementById('artesanal');
-        
-        imagemProduto = `data:image/jpeg;base64,${produto.vB_IMAGEM}`;
 
         nomeProdutoInput.value = produto.nM_PRODUTO;
-        precoProdutoInput.value = produto.vL_PRECO.toFixed(2);
+        precoProdutoInput.value = produto.vL_PRECO;
 
         // Marcando os checkboxes de acordo com os alimentos restritos associados ao produto
         convertXMLToList(produto.lS_ALIMENTOS_RESTRITOS);
@@ -82,12 +80,11 @@ function alterarProdutoPadeiro() {
     formData.append('dS_PRODUTO', "teste ");
     formData.append('vL_PRECO', document.getElementById('preco-do-produto').value);
 
-    if(document.getElementById('produto-imagem').files[0] != null){
+    if (document.getElementById('produto-imagem').files[0] != null) {
         imagemProduto = document.getElementById('produto-imagem').files[0];
-        console.log(imagemProduto)
-    } 
-    
-console.log(imagemProduto)
+    } else {
+        imagemProduto = null
+    }
 
     formData.append('fF_IMAGEM', imagemProduto)
 

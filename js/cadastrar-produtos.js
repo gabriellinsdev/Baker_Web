@@ -3,6 +3,23 @@ let NM_PADEIRO = sessionStorage.getItem('NM_PADEIRO');
 let CD_CLIENTE = sessionStorage.getItem('CD_CLIENTE');
 let NM_CLIENTE = sessionStorage.getItem('NM_CLIENTE');
 
+function validarFormulario() {
+    // Obtendo os campos do formulário
+    var nomeProduto = document.getElementById("nome-do-produto").value.trim();
+    var precoProduto = document.getElementById("preco-do-produto").value.trim();
+    var imagemProduto = document.getElementById("produto-imagem").value.trim();
+
+    // Verificando se os campos obrigatórios estão preenchidos
+    if (nomeProduto === "" || precoProduto === "" || imagemProduto === "") {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        return false; // Impede o envio do formulário
+    }
+
+    // Se todos os campos obrigatórios estiverem preenchidos, chama o método inserirProdutoPadeiro()
+    inserirProdutoPadeiro();
+}
+
+
 function inserirProdutoPadeiro() {
     let formData = new FormData();
     formData.append('cD_PRODUTO', '0');

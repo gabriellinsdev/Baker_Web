@@ -91,15 +91,15 @@
         </div>
         
         <div class="conf-padeiro-cadastrar-formulario">
-            <form onsubmit="return false;">
-                <label for="produto-nome">Nome do Produto</label><br>
-                <input type="text" id="nome-do-produto" name="nome-produto" class="conf-padeiro-form-cadastrar"><br><br>
+            <form id="formulario-cadastro" onsubmit= "return false">
+                <label for="nome-do-produto">Nome do Produto</label><br>
+                <input type="text" id="nome-do-produto" name="nome-produto" class="conf-padeiro-form-cadastrar" required><br><br>
 
-                <label for="produto-preco">Preço do Produto</label><br>
-                <input type="text" id="preco-do-produto" name="preco-produto" class="conf-padeiro-form-cadastrar"><br><br>
+                <label for="preco-do-produto">Preço do Produto</label><br>
+                <input type="text" id="preco-do-produto" name="preco-produto" class="conf-padeiro-form-cadastrar" required><br><br>
 
-                <label for="produto-preco">Especificação do Produto</label><br>
-            <input type="checkbox" id="zeroGluten" name="categoria" value="1">
+                <label for="especificacao-do-produto">Especificação do Produto</label><br>
+                <input type="checkbox" id="zeroGluten" name="categoria" value="1">
                 <label for="zeroGluten">Zero Gluten</label><br>
                     
                 <input type="checkbox" id="zeroLactose" name="categoria" value="2">
@@ -112,9 +112,9 @@
                 <label for="artesanal">Artesanal</label><br><br>
 
                 <label for="produto-imagem">Imagem do Produto</label><br>
-                <input type="file" id="produto-imagem" name="produto-imagem" accept="image/*"><br><br>
+                <input type="file" id="produto-imagem" name="produto-imagem" accept="image/*" required><br><br>
                 
-                <button onclick="inserirProdutoPadeiro()" class="conf-padeiro-btncadastrar-produto-form">Cadastrar Produto</button>
+                <button onclick="validarFormulario()" class="conf-padeiro-btncadastrar-produto-form">Cadastrar Produto</button>
             </form>
         </div>
        
