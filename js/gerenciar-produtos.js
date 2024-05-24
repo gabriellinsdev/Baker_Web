@@ -42,6 +42,7 @@ function preencherProdutosNaPagina(produtos) {
   );
 
   produtos.forEach((produto) => {
+    console.log(produto)
     const produtoSection = document.createElement("section");
     produtoSection.classList.add("conf-padeiro-produtos-cadastrados");
 
