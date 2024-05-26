@@ -26,7 +26,7 @@ function parseAlimentosRestritos(xmlString) {
         let alimento = item.getElementsByTagName("DS_ALIMENTO")[0].textContent;
         alimentos.push(alimento);
     }
-    return alimentos;
+    return alimentos;    
 }
 
 function buscarPadeirosProximos() {
@@ -51,7 +51,6 @@ function buscarPadeirosProximos() {
         var mensagem = data.mensagem;
         var stacktrace = data.stacktrace;
 
-
         CD_PADEIRO1 = dados[0].cD_USUARIO;
         NM_PADEIRO1 = dados[0].nM_USUARIO;
         CD_PADEIRO2 = dados[1].cD_USUARIO;
@@ -63,17 +62,23 @@ function buscarPadeirosProximos() {
         document.querySelector('#padeiro2').textContent = NM_PADEIRO2;
         document.querySelector('#padeiro3').textContent = NM_PADEIRO3;
 
-        let alimentos1 = parseAlimentosRestritos(dados[0].lS_ALIMENTOS_RESTRITOS);
+        let alimentos1 = parseAlimentosRestritos(dados[0].lS_ALIMENTOS_RESTRITOS_PADEIRO);
         document.getElementById("restricao1").textContent = alimentos1[0] || "";
         document.getElementById("restricaoExtra1").textContent = alimentos1[1] || "";
+        document.getElementById("restricaoExtra12").textContent = alimentos1[2] || "";
+        document.getElementById("restricaoExtra13").textContent = alimentos1[3] || "";
 
-        let alimentos2 = parseAlimentosRestritos(dados[1].lS_ALIMENTOS_RESTRITOS);
+        let alimentos2 = parseAlimentosRestritos(dados[1].lS_ALIMENTOS_RESTRITOS_PADEIRO);
         document.getElementById("restricao2").textContent = alimentos2[0] || "";
         document.getElementById("restricaoExtra2").textContent = alimentos2[1] || "";
+        document.getElementById("restricaoExtra22").textContent = alimentos2[2] || "";
+        document.getElementById("restricaoExtra23").textContent = alimentos2[3] || "";
 
-        let alimentos3 = parseAlimentosRestritos(dados[2].lS_ALIMENTOS_RESTRITOS);
+        let alimentos3 = parseAlimentosRestritos(dados[2].lS_ALIMENTOS_RESTRITOS_PADEIRO);
         document.getElementById("restricao3").textContent = alimentos3[0] || "";
         document.getElementById("restricaoExtra3").textContent = alimentos3[1] || "";
+        document.getElementById("restricaoExtra32").textContent = alimentos3[2] || "";
+        document.getElementById("restricaoExtra33").textContent = alimentos3[3] || "";
 
         document.getElementById("button1").setAttribute('onclick', `redirectWithUserCode('${CD_PADEIRO1}', '${NM_PADEIRO1}')`);
         document.getElementById("button2").setAttribute('onclick', `redirectWithUserCode('${CD_PADEIRO2}', '${NM_PADEIRO2}')`);

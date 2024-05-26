@@ -27,6 +27,18 @@ function desabilitaAlimentoCaseiros() {
   }
 }
 
+function parseAlimentosRestritos(xmlString) {
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(xmlString, "text/xml");
+  const items = xmlDoc.getElementsByTagName("ITEM");
+  let alimentos = [];
+  for (let item of items) {
+    let alimento = item.getElementsByTagName("DS_ALIMENTO")[0].textContent;
+    alimentos.push(alimento);
+  }
+  return alimentos;
+}
+
 function buscarPadeiroIdeal() {
   // Obter o valor do CEP do input
   var cep = document.getElementById("padeiro_ideal-search").value;
@@ -47,30 +59,23 @@ function buscarPadeiroIdeal() {
 
   let xmlString = null;
   if (gluten !== "" || lactose !== "" || lowCarb !== "" || caseiros !== "") {
-    xmlString = `<ALIMENTOSRESTRITOS>${
-      lactose
+    xmlString = `<ALIMENTOSRESTRITOS>${lactose
         ? `<ITEM><CD_ALIMENTO_RESTRITO>${lactose}</CD_ALIMENTO_RESTRITO></ITEM>`
         : ""
-    }${
-      gluten
+      }${gluten
         ? `<ITEM><CD_ALIMENTO_RESTRITO>${gluten}</CD_ALIMENTO_RESTRITO></ITEM>`
         : ""
-    }${
-      lowCarb
+      }${lowCarb
         ? `<ITEM><CD_ALIMENTO_RESTRITO>${lowCarb}</CD_ALIMENTO_RESTRITO></ITEM>`
         : ""
-    }${
-      caseiros
+      }${caseiros
         ? `<ITEM><CD_ALIMENTO_RESTRITO>${caseiros}</CD_ALIMENTO_RESTRITO></ITEM>`
         : ""
-    }</ALIMENTOSRESTRITOS>`;
+      }</ALIMENTOSRESTRITOS>`;
   }
-
-  console.log(xmlString);
-
   // Fazer a requisição para a API
   fetch(
-    `https://localhost:7023/ListarPadeirosProximos?CEP_CLIENTE=${cep}&QT_LINHAS=${quantidade}&LS_ALIMENTOS_RESTRITOS=${encodeURIComponent(
+    `https://localhost:7023/ListarPadeirosProximos?CEP_CLIENTE=${cep}&QT_LINHAS=${quantidade}&lS_ALIMENTOS_RESTRITOS_PADEIRO=${encodeURIComponent(
       xmlString
     )}`,
     {
@@ -92,12 +97,18 @@ function buscarPadeiroIdeal() {
       var mensagem = data.mensagem;
       var stacktrace = data.stacktrace;
 
-      console.log(dados);
-
       CD_PADEIRO = dados[0].cD_USUARIO;
       NM_PADEIRO = dados[0].nM_USUARIO;
 
       document.querySelector("#padeiro").textContent = NM_PADEIRO;
+
+      let alimentos = parseAlimentosRestritos(dados[0].lS_ALIMENTOS_RESTRITOS_PADEIRO);
+      document.getElementById("restricao").textContent = alimentos[0] || "";
+      document.getElementById("restricaoExtra").textContent = alimentos[1] || "";
+      document.getElementById("restricaoExtra1").textContent = alimentos[2] || "";
+      document.getElementById("restricaoExtra2").textContent = alimentos[3] || "";
+
+      document.getElementById("button").setAttribute("onclick", `redirectWithUserCode('${CD_PADEIRO}', '${NM_PADEIRO}')`);
     })
     .catch((error) => {
       console.error("Erro:", error);

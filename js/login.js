@@ -19,14 +19,10 @@ function buscarUsuario(cd_key, nm_key, CD_USUARIO) {
       var Usuario = data.data;
       var mensagem = data.mensagem;
       var stacktrace = data.stacktrace;
-
-      console.log(Usuario);
-
       sessionStorage.setItem(cd_key, Usuario.cD_USUARIO);
       sessionStorage.setItem(nm_key, Usuario.nM_USUARIO);
 
       let usuarioElement = document.getElementById("usuario");
-      console.log(usuarioElement)
       if (cd_key == "CD_PADEIRO") {
         usuarioElement.value = Usuario.nM_USUARIO;
       }

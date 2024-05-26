@@ -24,9 +24,7 @@ function buscarVendasPorPadeiro() {
         var vendas = data.data;
         var mensagem = data.mensagem;
         var stacktrace = data.stacktrace;
-    
-        console.log(vendas);
-    
+            
         // Verificar se os dados estão presentes e se há algum erro
         if (!vendas || mensagem || stacktrace) {
             console.error('Erro:', mensagem || stacktrace);

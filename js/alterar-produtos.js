@@ -48,7 +48,7 @@ function preencherProdutoNaPagina(produto) {
         precoProdutoInput.value = produto.vL_PRECO;
 
         // Marcando os checkboxes de acordo com os alimentos restritos associados ao produto
-        convertXMLToList(produto.lS_ALIMENTOS_RESTRITOS);
+        convertXMLToList(produto.lS_ALIMENTOS_RESTRITOS_PRODUTO);
 
         alimentosRestritos.forEach(alimentosRestritos => {
             switch (alimentosRestritos.CD_ALIMENTO_RESTRITO) {                
@@ -103,7 +103,7 @@ function alterarProdutoPadeiro() {
     categoriasXML += '</ALIMENTOSRESTRITOS>';
 
     // Adicionar o XML das categorias ao formData
-    formData.append('lS_ALIMENTOS_RESTRITOS', categoriasXML);
+    formData.append('lS_ALIMENTOS_RESTRITOS_PRODUTO', categoriasXML);
 
 
     fetch('https://localhost:7023/Produtos/Update', {

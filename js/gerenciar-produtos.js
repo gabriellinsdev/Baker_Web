@@ -25,7 +25,6 @@ function buscarProdutosPadeiro() {
       let produtos = data.data;
       var mensagem = data.mensagem;
       var stacktrace = data.stacktrace;
-      console.log(produtos);
       preencherProdutosNaPagina(produtos);
     })
     .catch((error) => {
@@ -42,7 +41,6 @@ function preencherProdutosNaPagina(produtos) {
   );
 
   produtos.forEach((produto) => {
-    console.log(produto)
     const produtoSection = document.createElement("section");
     produtoSection.classList.add("conf-padeiro-produtos-cadastrados");
 
@@ -68,7 +66,7 @@ function preencherProdutosNaPagina(produtos) {
     divInformacoes.appendChild(descricao1);
 
     const descricao2 = document.createElement("p");
-    const alimentosRestritosXML = produto.lS_ALIMENTOS_RESTRITOS;
+    const alimentosRestritosXML = produto.lS_ALIMENTOS_RESTRITOS_PRODUTO;
     const parser = new DOMParser();
     const xmlDoc = parser.parseFromString(alimentosRestritosXML, "text/xml");
     const items = xmlDoc.querySelectorAll("ITEM");
@@ -132,9 +130,8 @@ function alterarProdutoPadeiro(PRODUTO) {
   let alimentosRestritos = [];
   checkboxes.forEach((checkbox) => {
     alimentosRestritos.push(checkbox.value);
-    console.log(alimentosRestritos);
   });
-  formData.append("lS_ALIMENTOS_RESTRITOS", JSON.stringify(alimentosRestritos));
+  formData.append("lS_ALIMENTOS_RESTRITOS_PRODUTO", JSON.stringify(alimentosRestritos));
 
   fetch(`https://localhost:7023/Produtos/Update`, {
     method: "PUT",

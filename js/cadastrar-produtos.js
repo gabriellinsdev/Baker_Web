@@ -44,8 +44,7 @@ function inserirProdutoPadeiro() {
     categoriasXML += '</ALIMENTOSRESTRITOS>';
 
     // Adicionar o XML das categorias ao formData
-    formData.append('lS_ALIMENTOS_RESTRITOS', categoriasXML);
-    console.log(categoriasXML)
+    formData.append('lS_ALIMENTOS_RESTRITOS_PRODUTO', categoriasXML);
 
 
     fetch('https://localhost:7023/Produtos/Insert', {

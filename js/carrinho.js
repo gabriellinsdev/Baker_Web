@@ -19,7 +19,6 @@ function listarCarrinho() {
         return response.json();
     })
     .then(data => {
-        console.log(data.data)
         // Chamada à função para exibir os produtos do carrinho na página
         exibirProdutosCarrinho(data.data);
     })
