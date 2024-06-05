@@ -8,7 +8,7 @@ buscarProdutosPadeiro();
 
 
 function buscarProdutosPadeiro() {
-  fetch(`https://localhost:7023/Produtos/List?CD_USUARIO=${CD_PADEIRO}`, {
+  fetch(`${BASE_URL_API2}/Produtos/List?CD_USUARIO=${CD_PADEIRO}`, {
     headers: {
       "Content-Type": "application/json",
       Accept: "*/*",
@@ -153,7 +153,7 @@ function alterarProdutoPadeiro(PRODUTO) {
 }
 
 function excluirProdutoPadeiro(CD_PRODUTO) {
-  fetch(`https://localhost:7023/Produtos/Delete?cd_produto=${CD_PRODUTO}`, {
+  fetch(`${BASE_URL_API2}/Produtos/Delete?cd_produto=${CD_PRODUTO}`, {
     headers: {
       "Content-Type": "application/json",
       Accept: "*/*",

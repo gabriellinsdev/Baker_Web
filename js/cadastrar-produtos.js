@@ -47,7 +47,7 @@ function inserirProdutoPadeiro() {
     formData.append('lS_ALIMENTOS_RESTRITOS_PRODUTO', categoriasXML);
 
 
-    fetch('https://localhost:7023/Produtos/Insert', {
+    fetch(`${BASE_URL_API2}/Produtos/Insert`, {
         method: 'POST',
         mode: 'cors',
         body: formData
@@ -58,8 +58,8 @@ function inserirProdutoPadeiro() {
         }
         // Verifica o status da resposta para determinar o sucesso da inclusão
         if (response.status === 200) {
-            console.log('Inclusão efetuada com sucesso!');
             window.alert("Produto cadastrado com sucesso");
+            window.location.href = 'padeiro-configuracoes-gerenciar-produtos.html';
             // Aqui você pode fazer alguma ação adicional, se necessário
         } else {
             throw new Error('Erro ao incluir o produto!');

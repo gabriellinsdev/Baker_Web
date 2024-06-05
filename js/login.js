@@ -1,8 +1,8 @@
-buscarUsuario("CD_PADEIRO","NM_PADEIRO","94B4BEE0-FBF3-4AF1-A67D-69710BF12F9B");
-buscarUsuario("CD_CLIENTE","NM_CLIENTE","BD180837-2821-4EA4-810C-7C396BAC6742");
+buscarUsuario("CD_PADEIRO","NM_PADEIRO","13AAFADD-331D-4C7E-AED2-E48BD131B463");
+buscarUsuario("CD_CLIENTE","NM_CLIENTE","B0EB1CAB-FBEA-45AC-941E-C772F77E5685");
 
 function buscarUsuario(cd_key, nm_key, CD_USUARIO) {
-  fetch(`https://localhost:7023/Usuario/Get?CD_USUARIO=${CD_USUARIO}`, {
+  fetch(`${BASE_URL_API2}/Usuario/Get?CD_USUARIO=${CD_USUARIO}`, {
     headers: {
       "Content-Type": "application/json",
       Accept: "*/*",

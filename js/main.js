@@ -1,4 +1,6 @@
 // Menu Sanduíche NavBar
+const BASE_URL = 'https://localhost:7105';
+const BASE_URL_API2 = 'https://localhost:7023';
 
 function menuShow() {
     // Seleciona o elemento do menu móvel pela classe CSS '.navbar-mobile'

@@ -7,7 +7,7 @@ buscarVendasPorPadeiro();
 
 function buscarVendasPorPadeiro() {
     // Fazer a requisição para a API
-    fetch(`https://localhost:7023/Padeiros/SalesReport?CD_USUARIO=${CD_PADEIRO}`, {
+    fetch(`${BASE_URL_API2}/Padeiros/SalesReport?CD_USUARIO=${CD_PADEIRO}`, {
         headers:{
             "Content-Type":"application/json",
             "Accept":"*/*"

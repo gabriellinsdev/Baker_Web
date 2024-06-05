@@ -74,8 +74,7 @@ function buscarPadeiroIdeal() {
       }</ALIMENTOSRESTRITOS>`;
   }
   // Fazer a requisição para a API
-  fetch(
-    `https://localhost:7023/ListarPadeirosProximos?CEP_CLIENTE=${cep}&QT_LINHAS=${quantidade}&lS_ALIMENTOS_RESTRITOS_PADEIRO=${encodeURIComponent(
+  fetch(`${BASE_URL_API2}/ListarPadeirosProximos?CEP_CLIENTE=${cep}&QT_LINHAS=${quantidade}&lS_ALIMENTOS_RESTRITOS_PADEIRO=${encodeURIComponent(
       xmlString
     )}`,
     {

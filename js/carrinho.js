@@ -4,7 +4,7 @@ let CD_CLIENTE = sessionStorage.getItem('CD_CLIENTE');
 let NM_CLIENTE = sessionStorage.getItem('NM_CLIENTE');
 
 function listarCarrinho() {
-    fetch(`https://localhost:7023/Carrinho/List?CD_USUARIO=${CD_CLIENTE}`, {
+    fetch(`${BASE_URL_API2}/Carrinho/List?CD_USUARIO=${CD_CLIENTE}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',

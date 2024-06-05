@@ -33,7 +33,7 @@ function buscarPadeirosProximos() {
     var cep = document.getElementById('padeiros_proximos-search').value;
     var quantidade = 3;
 
-    fetch(`https://localhost:7023/ListarPadeirosProximos?CEP_CLIENTE=${cep}&QT_LINHAS=${quantidade}`, {
+    fetch(`${BASE_URL_API2}/ListarPadeirosProximos?CEP_CLIENTE=${cep}&QT_LINHAS=${quantidade}`, {
         headers: {
             "Content-Type": "application/json",
             "Accept": "*/*"

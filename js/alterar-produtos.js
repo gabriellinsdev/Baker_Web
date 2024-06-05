@@ -10,7 +10,7 @@ let imagemProduto
 buscarProdutosPadeiro();
 
 function buscarProdutosPadeiro() {
-    fetch(`https://localhost:7023/Produtos/Get?CD_PRODUTO=${CD_PRODUTO}`, {
+    fetch(`${BASE_URL_API2}/Produtos/Get?CD_PRODUTO=${CD_PRODUTO}`, {
         headers:{
             "Content-Type":"application/json",
             "Accept":"*/*"
@@ -106,7 +106,7 @@ function alterarProdutoPadeiro() {
     formData.append('lS_ALIMENTOS_RESTRITOS_PRODUTO', categoriasXML);
 
 
-    fetch('https://localhost:7023/Produtos/Update', {
+    fetch(`${BASE_URL_API2}/Produtos/Update`, {
         method: 'POST',
         mode: 'cors',
         body: formData
